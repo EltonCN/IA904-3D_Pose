@@ -123,6 +123,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17624637
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17624639}
+  - component: {fileID: 17624638}
+  m_Layer: 0
+  m_Name: _PerceptionSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &17624638
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17624637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ee903ff896bde4bb82aed4aec2bf61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumerEndpoint:
+    rid: 4803494116377493507
+  accumulationSettings:
+    rid: 4803494116377493508
+  references:
+    version: 2
+    RefIds:
+    - rid: 4803494116377493507
+      type: {class: SoloEndpoint, ns: UnityEngine.Perception.GroundTruth.Consumers, asm: Unity.Perception.Runtime}
+      data:
+        soloDatasetName: solo
+    - rid: 4803494116377493508
+      type: {class: AccumulationSettings, ns: UnityEngine.Perception.Settings, asm: Unity.Perception.Runtime}
+      data:
+        accumulationSamples: 256
+        shutterInterval: 0
+        shutterFullyOpen: 0
+        shutterBeginsClosing: 1
+        adaptFixedLengthScenarioFrames: 1
+--- !u!4 &17624639
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17624637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57910064
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +196,10 @@ GameObject:
   m_Component:
   - component: {fileID: 57910065}
   - component: {fileID: 57910068}
-  - component: {fileID: 57910067}
   - component: {fileID: 57910066}
+  - component: {fileID: 57910069}
+  - component: {fileID: 57910070}
+  - component: {fileID: 57910071}
   m_Layer: 0
   m_Name: left
   m_TagString: MainCamera
@@ -150,8 +215,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57910064}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00032630624, y: -0.0009248579, z: 0.0025383334, w: 0.9999963}
-  m_LocalPosition: {x: 0.037186652, y: 0.00018817467, z: 0.0011890194}
+  m_LocalRotation: {x: -0.00032630624, y: 0.0009248579, z: -0.0025383334, w: 0.9999963}
+  m_LocalPosition: {x: -0.037186652, y: -0.00018817467, z: -0.0011890194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -286,14 +351,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &57910067
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57910064}
-  m_Enabled: 1
 --- !u!20 &57910068
 Camera:
   m_ObjectHideFlags: 0
@@ -312,7 +369,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 2
   m_FocusDistance: 10
-  m_FocalLength: 2.5646455
+  m_FocalLength: 2.564463
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -327,7 +384,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50.149876
+  field of view: 50.153008
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -345,6 +402,236 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &57910069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57910064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4467405dbcbd3d64ab4363e9ae8bb813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CameraSensor:
+    rid: 4803494116377493504
+  m_Labelers:
+  - rid: 4803494116377493509
+  - rid: 4803494116377493512
+  - rid: 4803494116377493516
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  id: camera_left
+  description: 
+  captureRgbImages: 1
+  firstCaptureFrame: 0
+  captureTriggerMode: 0
+  manualSensorAffectSimulationTiming: 0
+  simulationDeltaTime: 0.0166
+  framesBetweenCaptures: 0
+  showVisualizations: 1
+  alphaThreshold: 0.1
+  overrideLayerMask: 0
+  useAccumulation: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4803494116377493504
+      type: {class: UnityCameraSensor, ns: UnityEngine.Perception.GroundTruth.Sensors, asm: Unity.Perception.Runtime}
+      data:
+        superSamplingFactor: 1
+    - rid: 4803494116377493509
+      type: {class: KeypointLabeler, ns: UnityEngine.Perception.GroundTruth.Labelers, asm: Unity.Perception.Runtime}
+      data:
+        enabled: 1
+        activeTemplate: {fileID: 11400000, guid: 509391e301c6a6c43abf9e7d03929d9b, type: 2}
+        annotationId: keypoints
+        idLabelConfig: {fileID: 11400000, guid: 4b85642ca8f3e3e44916e83e66932919, type: 2}
+        visualizeOccludedPoints: 1
+        objectFilter: 0
+        animationPoseConfigs: []
+    - rid: 4803494116377493512
+      type: {class: Keypoint3dLabeler, ns: Unity.CV.SyntheticHumans.Labelers, asm: Unity.CV.SyntheticHumans.Runtime}
+      data:
+        enabled: 1
+        annotationId: keypoint3d
+    - rid: 4803494116377493516
+      type: {class: CameraInstrinsicsLabeler, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+--- !u!114 &57910070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57910064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c1639dbd6ff234f8abef67d32a1b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionScale: {x: 0.0025, y: 0.0025, z: 0.0025}
+  rotationScale: {x: 1, y: 1, z: 1}
+--- !u!114 &57910071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57910064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb3e65e2eab4445bc88bb81bf248ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &241071257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241071259}
+  - component: {fileID: 241071258}
+  m_Layer: 0
+  m_Name: Scenario
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &241071258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241071257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50076aff0af4515b4422166496fdd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Randomizers:
+  - rid: 4803494116377493524
+  - rid: 4803494117659639808
+  configuration: {fileID: 0}
+  constants:
+    randomSeed: 539662031
+    startIteration: 0
+    iterationCount: 10
+    totalIterations: 100
+    instanceCount: 1
+    instanceIndex: 0
+  framesPerIteration: 1
+  m_ProgressPercentage: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4803494116377493524
+      type: {class: AdditiveTransformationRandomizer, ns: , asm: Assembly-CSharp}
+      data:
+        m_Enabled: 1
+        collapsed: 1
+        <enabledStateCanBeSwitchedByUser>k__BackingField: 1
+        positionParameter:
+          collapsed: 0
+          value:
+            rid: 4803494116377493529
+        rotationParameter:
+          collapsed: 0
+          value:
+            rid: 4803494116377493530
+    - rid: 4803494116377493529
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 1
+        range:
+          minimum: -1
+          maximum: 1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 4803494116377493530
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 1
+        range:
+          minimum: -1
+          maximum: 1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 4803494117659639808
+      type: {class: AdditiveCameraRandomizer, ns: , asm: Assembly-CSharp}
+      data:
+        m_Enabled: 1
+        collapsed: 0
+        <enabledStateCanBeSwitchedByUser>k__BackingField: 1
+        focalLenght_percentage:
+          collapsed: 0
+          value:
+            rid: 4803494117659639809
+        sensorSize_percentage:
+          collapsed: 0
+          x:
+            rid: 4803494117659639811
+          y:
+            rid: 4803494117659639812
+    - rid: 4803494117659639809
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.5
+        range:
+          minimum: -0.1
+          maximum: 0.1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 4803494117659639811
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.05
+        range:
+          minimum: -0.1
+          maximum: 0.1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 4803494117659639812
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.05
+        range:
+          minimum: -0.1
+          maximum: 0.1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+--- !u!4 &241071259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241071257}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.089216, y: -1.7990413, z: -0.31670094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255777533
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraData: {fileID: 11400000, guid: 4e3d8f5dc6ce8fd468f45eece01caf7b, type: 2}
+  inverted: 1
 --- !u!4 &909605004
 Transform:
   m_ObjectHideFlags: 0
@@ -830,8 +1118,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1843906714}
   - component: {fileID: 1843906717}
-  - component: {fileID: 1843906716}
   - component: {fileID: 1843906715}
+  - component: {fileID: 1843906718}
+  - component: {fileID: 1843906719}
+  - component: {fileID: 1843906720}
   m_Layer: 0
   m_Name: right
   m_TagString: MainCamera
@@ -847,8 +1137,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843906713}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0031179574, y: 0.0035305088, z: -0.00025557578, w: 0.9999889}
-  m_LocalPosition: {x: -0.037413914, y: 0.00005858277, z: 0.0013307106}
+  m_LocalRotation: {x: 0.0031179574, y: -0.0035305088, z: 0.00025557578, w: 0.9999889}
+  m_LocalPosition: {x: 0.037413914, y: -0.00005858277, z: -0.0013307106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -983,14 +1273,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1843906716
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843906713}
-  m_Enabled: 1
 --- !u!20 &1843906717
 Camera:
   m_ObjectHideFlags: 0
@@ -1042,6 +1324,91 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1843906718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843906713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4467405dbcbd3d64ab4363e9ae8bb813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CameraSensor:
+    rid: 4803494116377493505
+  m_Labelers:
+  - rid: 4803494116377493511
+  - rid: 4803494116377493514
+  - rid: 4803494116377493518
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  id: camera_right
+  description: 
+  captureRgbImages: 1
+  firstCaptureFrame: 0
+  captureTriggerMode: 0
+  manualSensorAffectSimulationTiming: 0
+  simulationDeltaTime: 0.0166
+  framesBetweenCaptures: 0
+  showVisualizations: 1
+  alphaThreshold: 0.1
+  overrideLayerMask: 0
+  useAccumulation: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4803494116377493505
+      type: {class: UnityCameraSensor, ns: UnityEngine.Perception.GroundTruth.Sensors, asm: Unity.Perception.Runtime}
+      data:
+        superSamplingFactor: 1
+    - rid: 4803494116377493511
+      type: {class: KeypointLabeler, ns: UnityEngine.Perception.GroundTruth.Labelers, asm: Unity.Perception.Runtime}
+      data:
+        enabled: 1
+        activeTemplate: {fileID: 11400000, guid: 509391e301c6a6c43abf9e7d03929d9b, type: 2}
+        annotationId: keypoints
+        idLabelConfig: {fileID: 11400000, guid: 4b85642ca8f3e3e44916e83e66932919, type: 2}
+        visualizeOccludedPoints: 1
+        objectFilter: 0
+        animationPoseConfigs: []
+    - rid: 4803494116377493514
+      type: {class: Keypoint3dLabeler, ns: Unity.CV.SyntheticHumans.Labelers, asm: Unity.CV.SyntheticHumans.Runtime}
+      data:
+        enabled: 1
+        annotationId: keypoint3d
+    - rid: 4803494116377493518
+      type: {class: CameraInstrinsicsLabeler, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+--- !u!114 &1843906719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843906713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c1639dbd6ff234f8abef67d32a1b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionScale: {x: 0.0025, y: 0.0025, z: 0.0025}
+  rotationScale: {x: 1, y: 1, z: 1}
+--- !u!114 &1843906720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843906713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb3e65e2eab4445bc88bb81bf248ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1906168637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1421,9 @@ GameObject:
   - component: {fileID: 1906168639}
   - component: {fileID: 1906168638}
   - component: {fileID: 1906168641}
+  - component: {fileID: 1906168642}
+  - component: {fileID: 1906168643}
+  - component: {fileID: 1906168644}
   m_Layer: 0
   m_Name: center
   m_TagString: MainCamera
@@ -1085,7 +1455,7 @@ Camera:
   m_FOVAxisMode: 0
   m_Iso: 200
   m_ShutterSpeed: 0.005
-  m_Aperture: 1.8
+  m_Aperture: 2
   m_FocusDistance: 10
   m_FocalLength: 4.8750334
   m_BladeCount: 5
@@ -1128,8 +1498,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906168637}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1264,11 +1634,98 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &1906168642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906168637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4467405dbcbd3d64ab4363e9ae8bb813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CameraSensor:
+    rid: 4803494116377493506
+  m_Labelers:
+  - rid: 4803494116377493510
+  - rid: 4803494116377493513
+  - rid: 4803494116377493517
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  id: camera_center
+  description: 
+  captureRgbImages: 1
+  firstCaptureFrame: 0
+  captureTriggerMode: 0
+  manualSensorAffectSimulationTiming: 0
+  simulationDeltaTime: 0.0166
+  framesBetweenCaptures: 0
+  showVisualizations: 1
+  alphaThreshold: 0.1
+  overrideLayerMask: 0
+  useAccumulation: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4803494116377493506
+      type: {class: UnityCameraSensor, ns: UnityEngine.Perception.GroundTruth.Sensors, asm: Unity.Perception.Runtime}
+      data:
+        superSamplingFactor: 1
+    - rid: 4803494116377493510
+      type: {class: KeypointLabeler, ns: UnityEngine.Perception.GroundTruth.Labelers, asm: Unity.Perception.Runtime}
+      data:
+        enabled: 1
+        activeTemplate: {fileID: 11400000, guid: 509391e301c6a6c43abf9e7d03929d9b, type: 2}
+        annotationId: keypoints
+        idLabelConfig: {fileID: 11400000, guid: 4b85642ca8f3e3e44916e83e66932919, type: 2}
+        visualizeOccludedPoints: 1
+        objectFilter: 0
+        animationPoseConfigs: []
+    - rid: 4803494116377493513
+      type: {class: Keypoint3dLabeler, ns: Unity.CV.SyntheticHumans.Labelers, asm: Unity.CV.SyntheticHumans.Runtime}
+      data:
+        enabled: 1
+        annotationId: keypoint3d
+    - rid: 4803494116377493517
+      type: {class: CameraInstrinsicsLabeler, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+--- !u!114 &1906168643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906168637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c1639dbd6ff234f8abef67d32a1b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionScale: {x: 0.0025, y: 0.0025, z: 0.0025}
+  rotationScale: {x: 1, y: 1, z: 1}
+--- !u!114 &1906168644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906168637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb3e65e2eab4445bc88bb81bf248ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 524914580}
-  - {fileID: 1200718384}
   - {fileID: 909605004}
+  - {fileID: 241071259}
+  - {fileID: 1200718384}
   - {fileID: 255777537}
+  - {fileID: 17624639}
