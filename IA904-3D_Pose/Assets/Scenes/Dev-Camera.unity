@@ -550,7 +550,7 @@ MonoBehaviour:
       type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         mean: 0
-        standardDeviation: 1
+        standardDeviation: 0.5
         range:
           minimum: -1
           maximum: 1
@@ -561,7 +561,7 @@ MonoBehaviour:
       type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         mean: 0
-        standardDeviation: 1
+        standardDeviation: 0.5
         range:
           minimum: -1
           maximum: 1
@@ -588,7 +588,7 @@ MonoBehaviour:
       type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         mean: 0
-        standardDeviation: 0.5
+        standardDeviation: 0.05
         range:
           minimum: -0.1
           maximum: 0.1
