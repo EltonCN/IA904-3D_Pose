@@ -12,8 +12,13 @@ public class AdditiveCameraRandomizer : Randomizer
     public FloatParameter focalLenght_percentage = new() { value = new NormalSampler() };
     public Vector2Parameter sensorSize_percentage = new() { x = new NormalSampler(), y = new NormalSampler() };
 
+    public FloatParameter aperture_percentage = new() {value = new NormalSampler()};
+    public Vector2Parameter lensShift_percentage = new() { x = new NormalSampler(), y = new NormalSampler() };
+
     Dictionary<AdditiveCameraTag, float> originalFocalLenght = new();
     Dictionary<AdditiveCameraTag, Vector2> originalSensorSize = new();
+    Dictionary<AdditiveCameraTag, float> originalAperture = new();
+    Dictionary<AdditiveCameraTag, Vector2> originalLensShift = new();
 
     IEnumerable<AdditiveCameraTag> iterationTags;
 
@@ -22,6 +27,8 @@ public class AdditiveCameraRandomizer : Randomizer
     {
         originalFocalLenght.Clear();
         originalSensorSize.Clear();
+        originalAperture.Clear();
+        originalLensShift.Clear();
 
         // Get all MyLightRandomizerTag's in the scene
         iterationTags = tagManager.Query<AdditiveCameraTag>();
@@ -31,7 +38,10 @@ public class AdditiveCameraRandomizer : Randomizer
 
             originalFocalLenght[tag] = camera.focalLength;
             originalSensorSize[tag] = camera.sensorSize;
+            originalAperture[tag] = camera.aperture;
+            originalLensShift[tag] = camera.lensShift;
 
+            //Focal Lenght
             float focalLenghtAdd = camera.focalLength*focalLenght_percentage.Sample();
             camera.focalLength += focalLenghtAdd;
 
@@ -40,6 +50,7 @@ public class AdditiveCameraRandomizer : Randomizer
                 camera.focalLength = 0;
             }
 
+            //Sensor size
             Vector2 sensorSizeAdd = camera.sensorSize*sensorSize_percentage.Sample();
             Vector2 sensorSize = camera.sensorSize+sensorSizeAdd;
 
@@ -53,6 +64,23 @@ public class AdditiveCameraRandomizer : Randomizer
             }
 
             camera.sensorSize = sensorSize;
+
+            //Aperture
+            float apertureAdd = camera.aperture*aperture_percentage.Sample();
+            camera.aperture += apertureAdd;
+
+            if(camera.aperture < 0)
+            {
+                camera.aperture = 0;
+            }
+
+
+            //Len shift
+
+            Vector2 lensShiftAdd = camera.lensShift*lensShift_percentage.Sample();
+            Vector2 lensShift = camera.lensShift+lensShiftAdd;
+
+            camera.lensShift = lensShift;
         }
     }
 
@@ -60,10 +88,15 @@ public class AdditiveCameraRandomizer : Randomizer
     {
         foreach (AdditiveCameraTag tag in iterationTags)
         {
-            Camera camera = tag.GetComponent<Camera>();
+            if(tag)
+            {
+                Camera camera = tag.GetComponent<Camera>();
 
-            camera.focalLength = originalFocalLenght[tag];
-            camera.sensorSize = originalSensorSize[tag];
+                camera.focalLength = originalFocalLenght[tag];
+                camera.sensorSize = originalSensorSize[tag];
+                camera.aperture = originalAperture[tag];
+                camera.lensShift = originalLensShift[tag];
+            }
         }
     }
 }

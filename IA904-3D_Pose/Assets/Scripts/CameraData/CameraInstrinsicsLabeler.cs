@@ -46,7 +46,7 @@ public class CameraInstrinsicsLabeler : CameraLabeler
 
         var sensorHandle = perceptionCamera.SensorHandle;
 
-        var annotation1 = new TargetMetrics(targetMetricsDef, sensorHandle.Id, calibration_matrix, far_clip_plane, near_clip_plane);
+        var annotation1 = new TargetMetrics(targetMetricsDef, sensorHandle.Id, calibration_matrix, far_clip_plane, near_clip_plane, cam.aperture, cam.sensorSize, cam.lensShift);
         sensorHandle.ReportAnnotation(targetMetricsDef, annotation1);;
     }
 
@@ -62,16 +62,22 @@ public class CameraInstrinsicsLabeler : CameraLabeler
     [Serializable]
     class TargetMetrics : Annotation
     {
-        public TargetMetrics(AnnotationDefinition definition, string sensorId, float[] calibration_matrix, float far_plane, float near_plane)
+        public TargetMetrics(AnnotationDefinition definition, string sensorId, float[] calibration_matrix, float far_plane, float near_plane, float aperture, Vector2 sensorSize, Vector2 lensShift)
             : base(definition, sensorId)
         {
             this.farClippingPlane = far_plane;
             this.nearClippingPlane = near_plane;
             this.calibration_matrix = calibration_matrix;
+            this.aperture = aperture;
+            this.sensorSize = sensorSize;
+            this.lensShift = lensShift;
         }
         public float farClippingPlane ;
         public float nearClippingPlane ;
         public float[] calibration_matrix;
+        public float aperture;
+        public Vector2 sensorSize;
+        public Vector2 lensShift;
 
         public override void ToMessage(IMessageBuilder builder)
         {
@@ -79,6 +85,9 @@ public class CameraInstrinsicsLabeler : CameraLabeler
             builder.AddFloat("nearClippingPlane", nearClippingPlane);
             builder.AddFloat("farClippingPlane", farClippingPlane);
             builder.AddFloatArray("calibration_matrix", calibration_matrix);
+            builder.AddFloat("aperture", aperture);
+            builder.AddFloatArray("sensorSize", new float[2]{sensorSize.x, sensorSize.y});
+            builder.AddFloatArray("lensShift", new float[2]{lensShift.x, lensShift.y});
         }
 
         public override bool IsValid() => true;

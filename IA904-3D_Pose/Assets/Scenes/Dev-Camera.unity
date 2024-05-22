@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1656.0237, g: 1842.1975, b: 2253.5862, a: 1}
+  m_IndirectSpecularColor: {r: 1653.7812, g: 1839.7781, b: 2250.6355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -532,6 +532,39 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 2682531810597928960
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.025
+        range:
+          minimum: -0.05
+          maximum: 0.05
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 2682531810597928961
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.05
+        range:
+          minimum: -0.1
+          maximum: 0.1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
+    - rid: 2682531810597928962
+      type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        mean: 0
+        standardDeviation: 0.05
+        range:
+          minimum: -0.1
+          maximum: 0.1
+        <minAllowed>k__BackingField: 0
+        <maxAllowed>k__BackingField: 0
+        <shouldCheckValidRange>k__BackingField: 0
     - rid: 4803494116377493524
       type: {class: AdditiveTransformationRandomizer, ns: , asm: Assembly-CSharp}
       data:
@@ -572,7 +605,7 @@ MonoBehaviour:
       type: {class: AdditiveCameraRandomizer, ns: , asm: Assembly-CSharp}
       data:
         m_Enabled: 1
-        collapsed: 0
+        collapsed: 1
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         focalLenght_percentage:
           collapsed: 0
@@ -584,6 +617,16 @@ MonoBehaviour:
             rid: 4803494117659639811
           y:
             rid: 4803494117659639812
+        aperture_percentage:
+          collapsed: 0
+          value:
+            rid: 2682531810597928960
+        lensShift_percentage:
+          collapsed: 0
+          x:
+            rid: 2682531810597928961
+          y:
+            rid: 2682531810597928962
     - rid: 4803494117659639809
       type: {class: NormalSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
@@ -965,7 +1008,7 @@ GameObject:
   - component: {fileID: 909605004}
   - component: {fileID: 909605003}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: OAK-D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
