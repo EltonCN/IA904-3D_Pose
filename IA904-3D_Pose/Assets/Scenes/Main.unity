@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -3481,7 +3481,7 @@ MonoBehaviour:
       type: {class: PointListPlacementRandomizer, ns: Unity.CV.SyntheticHumans.Randomizers, asm: Unity.CV.SyntheticHumans.Runtime}
       data:
         m_Enabled: 1
-        collapsed: 0
+        collapsed: 1
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         pointListSetting:
           anchorPoints:
@@ -3550,7 +3550,7 @@ MonoBehaviour:
       type: {class: BackgroundObjectPlacementRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers, asm: Unity.Perception.Runtime}
       data:
         m_Enabled: 1
-        collapsed: 0
+        collapsed: 1
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         depth: -5
         layerCount: 5
@@ -3910,7 +3910,7 @@ MonoBehaviour:
       type: {class: AdditiveCameraRandomizer, ns: , asm: Assembly-CSharp}
       data:
         m_Enabled: 1
-        collapsed: 1
+        collapsed: 0
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         focalLenght_percentage:
           collapsed: 0
@@ -4396,7 +4396,7 @@ PrefabInstance:
     - target: {fileID: 3012557337570980182, guid: f50870789176e7d4aa4eaa20bfce6adb, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: 33decce8d616f914d962b93521914757, type: 2}
+      objectReference: {fileID: 8400000, guid: afc154e2c08c75b4885d424996415b79, type: 2}
     - target: {fileID: 3738621888314517993, guid: f50870789176e7d4aa4eaa20bfce6adb, type: 3}
       propertyPath: clearColorMode
       value: 0
@@ -4472,11 +4472,11 @@ PrefabInstance:
     - target: {fileID: 7951693812606928240, guid: f50870789176e7d4aa4eaa20bfce6adb, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: 578e289d6d20f6b4ea5fa81ba62105a9, type: 2}
+      objectReference: {fileID: 8400000, guid: 1d6d89c7f2ed3344f8cd3305c1664642, type: 2}
     - target: {fileID: 8141972730526692379, guid: f50870789176e7d4aa4eaa20bfce6adb, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: 63c717404886d924a8baab0ddce7a9a5, type: 2}
+      objectReference: {fileID: 8400000, guid: 3242c519ed681fd49ac089616c8206ce, type: 2}
     - target: {fileID: 8435341374161199252, guid: f50870789176e7d4aa4eaa20bfce6adb, type: 3}
       propertyPath: firstCaptureFrame
       value: 0
