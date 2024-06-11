@@ -1,8 +1,8 @@
 {
   "constants": {
     "startIteration": 0,
-    "iterationCount": 200,
-    "randomSeed": 7516
+    "iterationCount": 2000,
+    "randomSeed": 9184
   },
   "randomizers": {
     "randomizerGroups": [
@@ -33,9 +33,8 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "uniform": {
-                      "min": 1.0,
-                      "max": 1.0
+                    "constant": {
+                      "value": 1.0
                     }
                   }
                 }
@@ -126,7 +125,7 @@
                 "imageLink": ""
               },
               "value": {
-                "num": 5.0
+                "num": 2.0
               }
             }
           },
@@ -176,7 +175,7 @@
                 "imageLink": ""
               },
               "value": {
-                "num": 1.0
+                "num": 0.5
               }
             }
           }
@@ -349,8 +348,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -1.0,
-                      "max": 1.0
+                      "min": -0.5,
+                      "max": 0.5
                     }
                   }
                 }
@@ -387,8 +386,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -0.5,
-                      "max": 0.5
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 }
@@ -411,8 +410,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -1.0,
-                      "max": 1.0
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 },
@@ -424,8 +423,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -1.0,
-                      "max": 1.0
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 }
@@ -448,8 +447,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -0.18000000715255737,
-                      "max": 0.18000000715255737
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 }
@@ -472,8 +471,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -0.0020000000949949026,
-                      "max": 0.0020000000949949026
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 },
@@ -485,8 +484,8 @@
                       "imageLink": ""
                     },
                     "uniform": {
-                      "min": -0.0020000000949949026,
-                      "max": 0.0020000000949949026
+                      "min": -0.0099999997764825821,
+                      "max": 0.0099999997764825821
                     }
                   }
                 }
@@ -494,6 +493,19 @@
             }
           }
         }
+      },
+      {
+        "randomizerId": "LightRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {}
       }
     ]
   }

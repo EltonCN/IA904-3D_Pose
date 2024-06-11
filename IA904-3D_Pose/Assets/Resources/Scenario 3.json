@@ -1,8 +1,8 @@
 {
   "constants": {
     "startIteration": 0,
-    "iterationCount": 2000,
-    "randomSeed": 9184
+    "iterationCount": 200,
+    "randomSeed": 7516
   },
   "randomizers": {
     "randomizerGroups": [
@@ -33,9 +33,8 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "uniform": {
-                      "min": 1.0,
-                      "max": 1.0
+                    "constant": {
+                      "value": 1.0
                     }
                   }
                 }
@@ -126,7 +125,7 @@
                 "imageLink": ""
               },
               "value": {
-                "num": 5.0
+                "num": 2.0
               }
             }
           },
@@ -176,7 +175,7 @@
                 "imageLink": ""
               },
               "value": {
-                "num": 1.0
+                "num": 0.5
               }
             }
           }
@@ -324,11 +323,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
+                    "uniform": {
                       "min": -1.0,
-                      "max": 1.0,
-                      "mean": 0.0,
-                      "stddev": 0.25
+                      "max": 1.0
                     }
                   }
                 }
@@ -350,11 +347,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.5,
-                      "max": 0.5,
-                      "mean": 0.0,
-                      "stddev": 0.25
+                    "uniform": {
+                      "min": -2.0,
+                      "max": 2.0
                     }
                   }
                 }
@@ -390,11 +385,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
+                    "uniform": {
                       "min": -0.10000000149011612,
-                      "max": 0.10000000149011612,
-                      "mean": 0.0,
-                      "stddev": 0.02500000037252903
+                      "max": 0.10000000149011612
                     }
                   }
                 }
@@ -416,11 +409,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.25,
-                      "max": 0.25,
-                      "mean": 0.0,
-                      "stddev": 0.0625
+                    "uniform": {
+                      "min": -0.10000000149011612,
+                      "max": 0.10000000149011612
                     }
                   }
                 },
@@ -431,11 +422,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.25,
-                      "max": 0.25,
-                      "mean": 0.0,
-                      "stddev": 0.0625
+                    "uniform": {
+                      "min": -0.10000000149011612,
+                      "max": 0.10000000149011612
                     }
                   }
                 }
@@ -457,11 +446,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.090000003576278687,
-                      "max": 0.090000003576278687,
-                      "mean": 0.0,
-                      "stddev": 0.022500000894069672
+                    "uniform": {
+                      "min": -0.10000000149011612,
+                      "max": 0.10000000149011612
                     }
                   }
                 }
@@ -483,11 +470,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.0010000000474974513,
-                      "max": 0.0010000000474974513,
-                      "mean": 0.0,
-                      "stddev": 0.00030000001424923539
+                    "uniform": {
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 },
@@ -498,11 +483,9 @@
                       "description": "",
                       "imageLink": ""
                     },
-                    "normal": {
-                      "min": -0.0010000000474974513,
-                      "max": 0.0010000000474974513,
-                      "mean": 0.0,
-                      "stddev": 0.00030000001424923539
+                    "uniform": {
+                      "min": -0.05000000074505806,
+                      "max": 0.05000000074505806
                     }
                   }
                 }
@@ -510,6 +493,19 @@
             }
           }
         }
+      },
+      {
+        "randomizerId": "LightRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {}
       }
     ]
   }

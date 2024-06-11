@@ -20,8 +20,8 @@ MonoBehaviour:
     collapsed: 0
     value:
       rid: 3808701280676741199
-  genders: 0100000002000000
-  ethnicities: 0100000002000000030000000400000005000000
+  genders: 010000000200000003000000
+  ethnicities: 01000000020000000300000004000000
   heightRange:
     collapsed: 0
     value:
