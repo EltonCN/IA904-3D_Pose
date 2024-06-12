@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -92,7 +93,7 @@ namespace IA904_3DPose
             foreach (var keypoint in keypoints)
             {
                 if (keypoint.location != null && keypoint.location.Count > 0)
-                    result += $", {string.Join(",", keypoint.location)}";
+                    result += $",{string.Join(",", keypoint.location.Select(l => l.ToString(CultureInfo.InvariantCulture)))}";
             }
             return result;
         }
@@ -126,7 +127,7 @@ namespace IA904_3DPose
 
         public override string ToString()
         {
-            return $"{age},{height},{weight},{sex},{ethnicity}";
+            return $"{age},{height.Replace(",", ".")},{weight.Replace(",", ".")},{sex},{ethnicity}";
         }
     }
 
@@ -155,7 +156,7 @@ namespace IA904_3DPose
             foreach (var keypoint in keypoints)
             {
                 if (keypoint.location != null && keypoint.location.Count > 0)
-                    result += $", {string.Join(",", keypoint.location)}";
+                    result += $",{string.Join(",", keypoint.location.Select(l => l.ToString(CultureInfo.InvariantCulture)))}";
             }
             return result;
         }
