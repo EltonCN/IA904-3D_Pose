@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818bebb0da3561145a3721f913ee8a9b, type: 3}
+  m_Name: camera_data_unity
+  m_EditorClassIdentifier: 
+  data:
+  - camera_name: center
+    f_number: 1.8
+    pixel_size: 1.55
+    resolution:
+    - 4056
+    - 3040
+    translation:
+    - 0
+    - 0
+    - 0
+    rotation:
+    - 0
+    - 0
+    - 0
+    - 1
+    sensor_size:
+    - 6.2868
+    - 4.712
+    sensor_diagonal: 7.8566403
+    offset:
+    - -0.0018388496
+    - 0.0045635826
+    focal_lenght: 4.8750334
+  - camera_name: left
+    f_number: 2
+    pixel_size: 3
+    resolution:
+    - 1280
+    - 800
+    translation:
+    - 0.037186652
+    - 0.00018817467
+    - 0.0011890194
+    rotation:
+    - 0.00032630624
+    - -0.0009248579
+    - 0.0025383334
+    - 0.9999963
+    sensor_size:
+    - 3.84
+    - 2.4
+    sensor_diagonal: 4.528311
+    offset:
+    - 0.0019382953
+    - 0.015363198
+    focal_lenght: 2.5646455
+  - camera_name: right
+    f_number: 2
+    pixel_size: 3
+    resolution:
+    - 1280
+    - 800
+    translation:
+    - -0.037413914
+    - 0.00005858277
+    - 0.0013307106
+    rotation:
+    - -0.0031179572
+    - 0.0035305086
+    - -0.00025557575
+    - 0.99998885
+    sensor_size:
+    - 3.84
+    - 2.4
+    sensor_diagonal: 4.528311
+    offset:
+    - 0.002172947
+    - 0.008993682
+    focal_lenght: 2.5669158
