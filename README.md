@@ -15,3 +15,9 @@ Estimação de pose corporal é uma técnica amplamente utilizada em diversas in
 Mais especificamente, dentro do contexto universitário, é comum a necessidade de coletas simples de poses corporais, seja para testar e validar ideias em projetos de pesquisa, seja para realização de projetos de disciplina. Este tipo de demanda se beneficiaria de um método de coleta rápido e com pouca preparação, não necessitando de uma precisão tão grande quanto sistemas de mocap, como coleta a partir de imagens.
 
 O objetivo deste projeto é então estimar a posição corporal no espaço 3D de uma pessoa, utilizando uma câmera estéreo (dipositivo com várias câmeras). Mais especificamente, este projeto utilizará uma "OAK-D", dipositivo desenvolvido para aplicações de visão computacional que possui três câmeras, duas laterais monocromáticas, global shutter e 720p; e uma central colorida, rolling shutter e 4K. A câmera se comunica com o computador através de um cabo USB-C, e também possui integrado processadores para execução de pipelines de processamento visual e IA [3].
+
+A descrição completa do projeto está disponível no [repositório da disciplina](https://github.com/Disciplinas-FEEC/IA904-2024S1/tree/main/projetos/3DStereoBodyPoseEstimation).
+
+## Gerador de dados
+
+A pasta [IA904-3D_Pose](https://github.com/EltonCN/IA904-3D_Pose/tree/main/IA904-3D_Pose) contém o código do gerador de dados desenvolvido.
