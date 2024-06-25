@@ -8,8 +8,9 @@ import pickle
 import time
 import wandb
 import datetime
+import random
 import multiprocessing as mp
-from typing import Tuple
+from typing import Tuple, Callable
     
 
 import tqdm
@@ -32,9 +33,35 @@ features_dataset_path = os.path.join(dataset_path, "extracted_features")
 index_path = os.path.join(dataset_path, "index.pickle")
 
 DEV_TEST_TAG = "DevTest"
+FINAL_MODEL_TAG = "FinalModel"
 
 MODE_TRAIN = 0
 MODE_EVALUATE = 1
+
+class EarlyStop:
+    def __init__(self, patience:int|None, min_delta:float|None):
+        if patience is None:
+            patience = 1
+        if min_delta is None:
+            min_delta = 0.0
+
+        self._patience = patience
+        self._min_delta = min_delta
+
+        self._counter = 0
+        self._last_maximum = float("inf")
+
+    def __call__(self, validation_loss:float) -> bool:
+        if validation_loss < self._last_maximum:
+            self._counter = 0
+
+            self._last_maximum = validation_loss
+        elif validation_loss - self._last_maximum > self._min_delta:
+            self._counter += 1
+
+        if self._counter >= self._patience:
+            return True
+        return False
 
 def print_info(loss_value:torch.Tensor, epoch:int, total_epochs:int, 
                time:float|None=None):
@@ -150,8 +177,8 @@ def compute_loss_and_optimize(model:torch.nn.Module,
     return total_loss
 
 def train(model:torch.nn.Module, criterions:dict[str, torch.nn.Module], loss_name:str, optimizer:torch.optim.Optimizer, 
-          dataloaders:DataLoader, n_epoch:int, accumulation_steps:int=1, 
-          use_wandb:bool=False) -> dict[str, ArrayLike]:
+          dataloaders:DataLoader, n_epoch:int, accumulation_steps:int=1,
+          use_wandb:bool=False, early_stop:Callable[[float], bool]|None=None) -> dict[str, ArrayLike]:
     
     hist : dict[str, list[torch.Tensor]|list[float]]= {}
     for name in criterions:
@@ -198,6 +225,10 @@ def train(model:torch.nn.Module, criterions:dict[str, torch.nn.Module], loss_nam
         if use_wandb:
             wandb.log(log)
 
+        if early_stop is not None:
+            if early_stop(loss_val[loss_name]):
+                break
+
     for key in hist:
         hist[key] = np.array(hist[key])
 
@@ -211,16 +242,18 @@ if __name__ == "__main__":
     batch_size = 32 # Tamanho de um batch
     convolutional_sizes = [10, 5]
     dataset_configuration = 0
-    dense_hidden_size = 75 # Quantidade de unidades na camada escondida
-    dropout_rate = 0.1
+    dense_hidden_size = 50 # Quantidade de unidades na camada escondida
+    dropout_rate = 0.2
     lr = 5e-3 # Taxa de treinamento
+    min_delta = 0
     n_epoch = 10 # Quantidade de epochs
     optimizer_class = torch.optim.Adam # Otimizador
+    patience = 10
     seed = 42
     train_loss = "mse"
     weight_decay = 5e-4 # Regularização L2
 
-    tags = [DEV_TEST_TAG]
+    tags = [DEV_TEST_TAG]#[FINAL_MODEL_TAG]
 
     config = {
         "accumulation_steps": accumulation_steps,
@@ -230,8 +263,10 @@ if __name__ == "__main__":
         "dense_hidden_size":dense_hidden_size,
         "dropout_rate" : dropout_rate,
         "lr": lr,
+        "min_delta":min_delta,
         "n_epoch": n_epoch,
         "optimizer_class": optimizer_class.__name__,
+        "patience":patience,
         "seed" : seed,
         "train_loss" : train_loss,
         "weight_decay": weight_decay,
@@ -249,12 +284,13 @@ if __name__ == "__main__":
         dataset = SyntheticOAKDDataset(dataset_path, [0, 1])
     elif dataset_configuration == 2:
         dataset = SyntheticOAKDDataset(dataset_path, [0, 1, 2])
+    else:
+        raise ValueError(f"dataset_configuration must be in {{0, 1, 2}} (configuration {dataset_configuration} does not exist).")
 
     torch_generator = torch.Generator()
     torch_generator.manual_seed(seed)
     torch.manual_seed(seed)
-
-    #dataset, _ = random_split(dataset, [0.1, 0.9])
+    random.seed(seed)
 
     train_dataset, val_dataset = random_split(dataset, [0.8, 0.2], generator=torch_generator)
     datasets = {"train":train_dataset, "val":val_dataset}
@@ -278,7 +314,14 @@ if __name__ == "__main__":
 
     optmizer = optimizer_class(model.parameters(), lr=lr, weight_decay=weight_decay)
 
-    train_history = train(model, criterions, train_loss, optmizer, dataloaders, n_epoch, accumulation_steps, use_wandb)
+    if use_wandb:
+        run.watch(model, criterions[train_loss], log_graph=True)
+
+    early_stop = EarlyStop(patience, min_delta)
+
+    train_history = train(model, criterions, train_loss, optmizer, 
+                          dataloaders, n_epoch, accumulation_steps, 
+                          use_wandb, early_stop)
 
     model_path = f"{run_name}.pth"
     model_path = os.path.join("models", model_path)
